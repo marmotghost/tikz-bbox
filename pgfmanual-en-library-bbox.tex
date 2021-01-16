@@ -1,19 +1,15 @@
-% Copyright 2020 by an anonymous contributor
+% Copyright 2021 by marmotghost
+% v0.1
 %
-% This file may be distributed and/or modified
+% This file may be distributed and/or modified under the 
+% LaTeX project public license (LPPL), version 1.3c
+% see
+% https://www.latex-project.org/lppl/lppl-1-3c/
 %
-% 1. under the LaTeX Project Public License and/or
-% 2. under the GNU Free Documentation License.
-%
-% See the file doc/generic/pgf/licenses/LICENSE for more details.
-%
-% The actions by someone who had nothing better to do than to step on others
-% by commenting on GitHub messages that were not at all her concern in public chats 
-% have caused so much bad blood that this library is not part of pgf.
-% As a consequence, a patch that does away with most of the dimension too large errors
-% will presumably never get completed. However, many of the dimension too
-% large errors (not related to this library!) can be cured by using the
-% use fpu reciprocal key, which is described at the end of this short manual.
+% It has been claimed that the license of this library had been changed so that this
+% library is no longer part of pgf. This claim is a lie. There was no license change
+% at all. Now, in 2021, the license got changed to LaTeX project public license
+% (LPPL), version 1.3c.
 
 \section{Bounding Boxes for B\'ezier Curves}
 
@@ -21,7 +17,8 @@
 \begin{pgflibrary}{bbox}
     This library provides methods to determine tight bounding boxes for
     B\'ezier curves. This library loads and uses the
-	|fpu| library.
+	|fpu| library. While this library might
+	possibly work with |TeX| or |ConTeXt|, this has never been tested.
 \end{pgflibrary}
 
 \subsection{Bounding box without the library}
@@ -166,21 +163,19 @@ A few comments are in order.
  errors. These errors do not come directly from the computations done by the
  library, which uses |fpu| for its computations, but from the aftermath. Many of
  these problems can be avoided by using the |fpu| library also for computing
- reciprocals. Using this key allows one to fix many |Dimension too large| errors
- in  other libraries, which are not related to the present one, and also fixes
- inaccuracies of (inverse) transformations when the scale factors are not
- integer.
+ reciprocals, which can be achieved using the key 
+ |/pgf/fpu/install only={reciprocal}|. This allows one to fix many 
+ |Dimension too large| errors in  other libraries, which are not related to the
+ present one, and also fixes inaccuracies of (inverse) transformations when the
+ scale factors are not integer.
 \end{enumerate}
 
-\begin{key}{/pgf/use fpu reciprocal\meta{boolean} (default true)}
-  This changes the computation of reciprocals from the standard pgf routine to
-  an |fpu| variant. The initial value is |false|.
-\end{key}
+\subsection{Reporting a bug}
+
+This library is maintained at the GitHub repository
+\href{https://github.com/marmotghost/tikz-bbox}{tikz-bbox}, where issues can get
+reported. The author is also active on the noncommercial \TeX\ Q\,\&\,A site
+\href{https://topanswers.xyz/tex}{topanswers.xyz/tex}, where requests that are not
+issues in the strict sense can be discussed.
 
 \endinput
-
-
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "pgfmanual-pdftex-version"
-%%% End:

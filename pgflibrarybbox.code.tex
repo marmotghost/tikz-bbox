@@ -1,11 +1,10 @@
-% Copyright 2020 by an anonymous contributor
+% Copyright 2021 by marmotghost
+% v0.1
 %
-% This file may be distributed and/or modified
-%
-% 1. under the LaTeX Project Public License and/or
-% 2. under the GNU General Public License.
-%
-% See the file doc/generic/pgf/licenses/LICENSE for more details.
+% This file may be distributed and/or modified under the 
+% LaTeX project public license (LPPL), version 1.3c
+% see
+% https://www.latex-project.org/lppl/lppl-1-3c/
 
 
 \usepgflibrary{fpu}
@@ -13,16 +12,6 @@
 \global\let\pgf@bbox@nlt@curveto@normal\pgf@nlt@curveto
 
 \pgfqkeys{/pgf}{bezier bounding box/.is if=pgf@bbox@switch@}
-
-
-\pgfqkeys{/pgf}{use fpu reciprocal/.code={%
-\def\pgfmathreciprocal@##1{%
-    \begingroup
-    \pgfkeys{/pgf/fpu=true,/pgf/fpu/output format=fixed}%
-    \pgfmathparse{1/##1}%
-    \pgfmath@smuggleone\pgfmathresult
-    \endgroup
-}}}%
 
 
 \def\pgf@bbox@switch@false{%
